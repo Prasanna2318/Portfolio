@@ -1,0 +1,420 @@
+/* Global Styles & Variables */
+:root {
+    --primary-color: #2563eb;
+    /* Modern Blue */
+    --secondary-color: #1e293b;
+    /* Dark Slate */
+    --accent-color: #3b82f6;
+    /* Lighter Blue */
+    --text-dark: #333333;
+    --text-light: #666666;
+    --bg-light: #f8f9fa;
+    --transition-speed: 0.3s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+a {
+    text-decoration: none;
+    transition: all var(--transition-speed) ease;
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.bg-light {
+    background-color: var(--bg-light) !important;
+}
+
+/* Helpers */
+.hidden {
+    opacity: 0;
+    transition: all 1s ease;
+}
+
+.letter-spacing-2 {
+    letter-spacing: 2px;
+}
+
+.line {
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin-top: 10px;
+}
+
+/* Navigation */
+.navbar {
+    transition: all 0.4s ease;
+    padding: 20px 0;
+    /* Initial padding */
+}
+
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 10px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.navbar.scrolled .navbar-brand,
+.navbar.scrolled .nav-link {
+    color: var(--secondary-color) !important;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.nav-link {
+    font-weight: 500;
+    margin-left: 15px;
+    position: relative;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed) ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.navbar.scrolled .nav-link::after {
+    background-color: var(--primary-color);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    position: relative;
+}
+
+.text-highlight {
+    color: var(--accent-color);
+    position: relative;
+    display: inline-block;
+}
+
+/* About Section */
+.about-img-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.about-img-container img {
+    transition: transform 0.5s ease;
+}
+
+.about-img-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Skills Section */
+.skill-item {
+    margin-bottom: 25px;
+}
+
+.progress {
+    height: 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+    transition: width 1.5s ease-in-out;
+}
+
+/* Certifications (Home Page) */
+.cert-card {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+.cert-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.cert-card .icon-box {
+    transition: transform 0.3s ease;
+}
+
+.cert-card:hover .icon-box {
+    transform: scale(1.1);
+}
+
+/* New Pages: Courses and Workshops */
+.workshop-card {
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.workshop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.portrait-cert .img-frame {
+    width: 100%;
+    /* Aspect ratio for portrait certificate (e.g., A4) */
+    aspect-ratio: 1 / 1.414;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portrait-cert img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.landscape-cert {
+    width: 100%;
+    /* Aspect ratio for landscape certificate */
+    aspect-ratio: 1.414 / 1;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+}
+
+.landscape-cert img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.workshop-card:hover .landscape-cert img {
+    transform: scale(1.03);
+}
+
+/* Contact Section */
+.contact-form .form-control {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0;
+    background: transparent;
+    padding: 15px 0;
+}
+
+.contact-form .form-control:focus {
+    box-shadow: none;
+    border-color: var(--primary-color);
+}
+
+.contact-form label {
+    padding-left: 0;
+    color: #999;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    padding: 12px 30px;
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+}
+
+/* Footer & Social Icons */
+.footer-section {
+    position: relative;
+    margin-top: auto;
+    /* Push footer to bottom if content is short */
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.2) rotate(360deg);
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.6);
+}
+
+
+/* Scroll Animations */
+.show {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
+}
+
+.left-slide {
+    transform: translateX(-50px);
+}
+
+.right-slide {
+    transform: translateX(50px);
+}
+
+.up-slide {
+    transform: translateY(50px);
+}
+
+.fade-in {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.fade-in.show {
+    opacity: 1 !important;
+}
+
+.delay-100 {
+    transition-delay: 100ms;
+}
+
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
+
+.delay-400 {
+    transition-delay: 400ms;
+}
+
+.delay-500 {
+    transition-delay: 500ms;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+    .navbar {
+        background-color: white;
+        /* Always solid on mobile for readability */
+        padding: 10px 0;
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.55)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    .navbar-brand,
+    .nav-link {
+        color: var(--text-dark) !important;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+}
+
+/* Projects Section */
+/* Projects Section */
+.project-img-container {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+    /* Smooth corners like a MacBook screen */
+    aspect-ratio: 20 / 9;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    /* Elevated shadow */
+}
+
+/* Ensure Carousel Fills Container */
+.project-img-container .carousel,
+.project-img-container .carousel-inner,
+.project-img-container .carousel-item {
+    height: 100%;
+    width: 100%;
+}
+
+.project-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Crop to fill */
+    transition: transform 0.8s ease;
+}
+
+.project-img-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Custom Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Make arrows visible on light images */
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    background-size: 50%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-img-container:hover .carousel-control-prev,
+.project-img-container:hover .carousel-control-next {
+    opacity: 1;
+}
